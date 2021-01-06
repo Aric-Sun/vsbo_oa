@@ -17,19 +17,19 @@
                             <span> 基本信息 </span>
                         </div>
                         <div class="section row">
-                            <div class="col-md-6">
-                                编号：
-                                <label class="field prepend-icon">
-                                    <input name="dId" class="gui-input" placeholder="编号..."/>
-                                    <label  class="field-icon">
-                                        <i class="fa fa-user"></i>
-                                    </label>
-                                </label>
-                            </div>
-                            <div class="col-md-6">
+<%--                            <div class="col-md-6">--%>
+<%--                                编号：--%>
+<%--                                <label class="field prepend-icon">--%>
+<%--                                    <input name="dId" class="gui-input" placeholder="编号..."/>--%>
+<%--                                    <label  class="field-icon">--%>
+<%--                                        <i class="fa fa-user"></i>--%>
+<%--                                    </label>--%>
+<%--                                </label>--%>
+<%--                            </div>--%>
+                            <div class="col-md-12">
                                 名称：
                                 <label  class="field prepend-icon">
-                                    <input name="dName" class="gui-input" placeholder="名称..." />
+                                    <input name="dname" class="gui-input" placeholder="名称..." />
                                     <label  class="field-icon">
                                         <i class="fa fa-user"></i>
                                     </label>

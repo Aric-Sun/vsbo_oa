@@ -10,9 +10,9 @@
     <meta name="description" content="AbsoluteAdmin - A Responsive HTML5 Admin UI Framework">
     <meta name="author" content="AbsoluteAdmin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/vsbo_oa/assets/skin/default_skin/css/theme.css">
-    <link rel="stylesheet" type="text/css" href="/vsbo_oa/assets/admin-tools/admin-forms/css/admin-forms.css">
-    <link rel="shortcut icon" href="/vsbo_oa/assets/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/oa/assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/oa/assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="shortcut icon" href="/oa/assets/img/favicon.ico">
 </head>
 <body class="external-page external-alt sb-l-c sb-r-c">
 <div id="main" class="animated fadeIn">
@@ -58,10 +58,10 @@
         </section>
     </section>
 </div>
-<script src="/vsbo_oa/vendor/jquery/jquery-1.11.1.min.js"></script>
-<script src="/vsbo_oa/vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
-<script src="/vsbo_oa/assets/js/utility/utility.js"></script>
-<script src="/vsbo_oa/assets/js/demo/demo.js"></script>
-<script src="/vsbo_oa/assets/js/main.js"></script>
+<script src="/oa/vendor/jquery/jquery-1.11.1.min.js"></script>
+<script src="/oa/vendor/jquery/jquery_ui/jquery-ui.min.js"></script>
+<script src="/oa/assets/js/utility/utility.js"></script>
+<script src="/oa/assets/js/demo/demo.js"></script>
+<script src="/oa/assets/js/main.js"></script>
 </body>
 </html>

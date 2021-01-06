@@ -13,7 +13,7 @@
 </head>
 <body>
 <h2>Hello,World!</h2>
-<a href="/oa/getEmpById.do?id=1002">查看员工</a>
+<a href="/oa/to_deptList.do">部门列表</a>
 ${emp}
 </body>
 </html>

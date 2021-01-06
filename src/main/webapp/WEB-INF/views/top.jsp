@@ -10,9 +10,9 @@
 
     <title> 爱博网OA--欢迎使用爱博网OA系统 </title>
 
-    <link rel="stylesheet" type="text/css" href="/vsbo_oa/assets/skin/default_skin/css/theme.css">
-    <link rel="stylesheet" type="text/css" href="/vsbo_oa/assets/admin-tools/admin-forms/css/admin-forms.css">
-    <link rel="shortcut icon" href="/vsbo_oa/assets/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="/oa/assets/skin/default_skin/css/theme.css">
+    <link rel="stylesheet" type="text/css" href="/oa/assets/admin-tools/admin-forms/css/admin-forms.css">
+    <link rel="shortcut icon" href="/oa/assets/img/favicon.ico">
 </head>
 
 <body class="admin-validation-page" data-spy="scroll" data-target="#nav-spy" data-offset="200">
@@ -27,7 +27,7 @@
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown menu-merge">
                 <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
-                    <img src="/vsbo_oa/assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
+                    <img src="/oa/assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
                     <span class="hidden-xs pl15"> 刘备 </span>
                     <span class="caret caret-tp hidden-xs"></span>
                 </a>
@@ -56,7 +56,7 @@
                 <div class="sidebar-widget author-widget">
                     <div class="media">
                         <a class="media-left" href="#">
-                            <img src="/vsbo_oa/assets/img/avatars/3.jpg" class="img-responsive">
+                            <img src="/oa/assets/img/avatars/3.jpg" class="img-responsive">
                         </a>
                         <div class="media-body">
                             <div class="media-author">刘备--总经理</div>
@@ -117,18 +117,18 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="accordion-toggle" href="#">
+                    <a class="accordion-toggle" href="/oa/to_deptList.do">
                         <span class="fa fa-columns"></span>
                         <span class="sidebar-title">部门管理</span>
                         <span class="caret"></span>
                     </a>
                     <ul class="nav sub-nav">
                         <li>
-                            <a href="/oa/getDepts.do">
+                            <a href="/oa/to_deptList.do">
                                 <span class="glyphicon glyphicon-calendar"></span> 所有部门 </a>
                         </li>
                         <li class="active">
-                            <a href="#">
+                            <a href="/oa/to_add.do">
                                 <span class="glyphicon glyphicon-check"></span> 添加部门 </a>
                         </li>
                     </ul>

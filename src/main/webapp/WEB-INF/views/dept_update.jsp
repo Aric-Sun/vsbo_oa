@@ -1,5 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <jsp:include page="top.jsp"/>
 
 <section id="content" class="table-layout animated fadeIn">
@@ -28,7 +28,7 @@
                             <div class="col-md-6">
                                 名称：
                                 <label class="field prepend-icon">
-                                    <input name="dName" value="${dept.dName}" class="gui-input" placeholder="名称..." />
+                                    <input name="dname" value="${dept.dname}" class="gui-input" placeholder="名称..." />
                                     <label class="field-icon">
                                         <i class="fa fa-user"></i>
                                     </label>

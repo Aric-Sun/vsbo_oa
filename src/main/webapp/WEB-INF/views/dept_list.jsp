@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 
 <jsp:include page="top.jsp"/>
 
@@ -60,7 +60,7 @@
                                         </label>
                                     </td>
                                     <td>${dept.dId}</td>
-                                    <td>${dept.dName}</td>
+                                    <td>${dept.dname}</td>
                                     <td>${dept.address}</td>
                                     <td>
                                         <a href="/oa/to_updateDept.do?dId=${dept.dId}">编辑</a>
