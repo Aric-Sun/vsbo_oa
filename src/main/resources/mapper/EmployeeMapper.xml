@@ -3,7 +3,52 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.github.aricSun.vsbo_oa.mapper.EmployeeMapper">
+
+    <resultMap id="empAndDept" type="HashMap" autoMapping="true">
+<!--     property:key column:列-->
+        <id property="eId" column="e_id"/>
+        <result property="password" column="password"/>
+    </resultMap>
+
     <select id="getEmpById" parameterType="int" resultType="Employee">
         select * from employee where e_id = #{id}
     </select>
+
+    <select id="getEmps" resultMap="empAndDept">
+        select employee.*, department.* from employee
+            left join department
+                on employee.d_id = department.d_id;
+    </select>
+
+<!--    新增用户信息-->
+    <insert id="addEmp" parameterType="Employee">
+        insert into employee
+        values (
+            null,
+            #{password},
+            #{ename},
+            #{job},
+            #{dId}
+        )
+    </insert>
+
+    <update id="updateEmp" parameterType="Employee">
+        update employee
+        <set>
+            <if test="ename!=null and ename!=''">
+                ename = #{ename},
+            </if>
+            <if test="job!=null and job!=''">
+                job = #{job},
+            </if>
+            <if test="dId != null">
+                d_id = #{dId},
+            </if>
+        </set>
+        where e_id = #{eId}
+    </update>
+
+    <delete id="deleteEmp" parameterType="int">
+        delete from employee where e_id = #{eId}
+    </delete>
 </mapper>

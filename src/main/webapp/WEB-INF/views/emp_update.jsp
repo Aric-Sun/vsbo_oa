@@ -44,10 +44,10 @@
                                         <c:forEach items="${depts}" var="dept">
                                             <c:choose>
                                                 <c:when test="${dept.dId==emp.dId}">
-                                                    <option value="${dept.dId}" selected="selected">${dept.dName}</option>
+                                                    <option value="${dept.dId}" selected="selected">${dept.dname}</option>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <option value="${dept.dId}">${dept.dName}</option>
+                                                    <option value="${dept.dId}">${dept.dname}</option>
                                                 </c:otherwise>
                                             </c:choose>
                                         </c:forEach>

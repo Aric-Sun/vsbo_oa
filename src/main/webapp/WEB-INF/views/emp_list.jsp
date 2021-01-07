@@ -62,7 +62,7 @@
                             <td>${emp.eId}</td>
                             <td>${emp.ename}</td>
 <%--                            <td class="text-center fw600">${emp.dName}</td>--%>
-                            <td >${emp.dName}</td>
+                            <td >${emp.dname}</td>
                             <td class="hidden-xs">
                                 <span class="badge badge-warning mr10 fs11">${emp.job}</span>
                             </td>

@@ -41,7 +41,7 @@
                                 <label class="field select">
                                     <select name="dId" itemLabel="name"  class="gui-input" placeholder="所属部门...">
                                         <c:forEach items="${depts}" var="dept">
-                                            <option value="${dept.dId}">${dept.dName}</option>
+                                            <option value="${dept.dId}">${dept.dname}</option>
                                         </c:forEach>
                                     </select>
                                     <i class="arrow double"></i>

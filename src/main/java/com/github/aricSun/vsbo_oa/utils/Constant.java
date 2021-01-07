@@ -17,7 +17,7 @@ public class Constant {
     //    提供一个获取所有职务的方法，返回所有的职务
     public static List<String> getPost(){
         List<String> list = new ArrayList<>();
-        list.add(POST_FINANCE);
+        list.add(POST_STAFF);
         list.add(POST_PM);
         list.add(POST_GM);
         list.add(POST_FINANCE);

@@ -100,7 +100,7 @@
                 </li>
                 <li class="sidebar-label pt15">基础信息管理</li>
                 <li>
-                    <a class="accordion-toggle" href="#">
+                    <a class="accordion-toggle" href="/oa/getEmps.do">
                         <span class="glyphicon glyphicon-check"></span>
                         <span class="sidebar-title">员工管理</span>
                         <span class="caret"></span>
@@ -111,7 +111,7 @@
                                 <span class="glyphicon glyphicon-calendar"></span> 所有员工 </a>
                         </li>
                         <li class="active">
-                            <a href="#">
+                            <a href="/oa/to_addEmp.do">
                                 <span class="glyphicon glyphicon-check"></span> 添加员工 </a>
                         </li>
                     </ul>
