@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 
@@ -99,7 +100,7 @@ public class EmployeeController {
 
     // 登录
     @RequestMapping("/login.do")
-    public String login(int eId, String password, HttpServletRequest request){
+    public String login(int eId, String password, HttpServletRequest request, HttpSession session){
         // 如果登陆成功，到个人中心
         // 登陆失败，回到登录界面，给出错误信息
 
@@ -107,6 +108,8 @@ public class EmployeeController {
         HashMap hashMap = employeeService.login(eId, password);
         if (hashMap != null){
             // login ok
+            // 将用户信息存储在session
+            session.setAttribute("emp", hashMap);  // 只需要有值就行，存什么不重要
             return "self";
         } else {
             // fail
