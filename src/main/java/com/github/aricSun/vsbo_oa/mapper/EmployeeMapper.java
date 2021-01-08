@@ -3,6 +3,7 @@ package com.github.aricSun.vsbo_oa.mapper;
 import com.github.aricSun.vsbo_oa.pojo.Employee;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -22,5 +23,7 @@ public interface EmployeeMapper {
     void updateEmp(Employee employee);
 
     void deleteEmp(@Param("eId") int eId);
+
+    HashMap login(@Param("eId") int eId, @Param("password") String passwordWithMD5);
 }
 

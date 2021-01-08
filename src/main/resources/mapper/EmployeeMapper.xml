@@ -51,4 +51,12 @@
     <delete id="deleteEmp" parameterType="int">
         delete from employee where e_id = #{eId}
     </delete>
+
+<!--    登录的查询操作-->
+    <select id="login" resultMap="empAndDept">
+        select e.*, d.* from employee e
+        left join department d
+        on e.d_id = d.d_id
+        where e.e_id = #{eId} and e.password = #{password};
+    </select>
 </mapper>

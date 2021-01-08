@@ -22,7 +22,7 @@
                 <div class="content-header">
                     <h1> 爱博网OA</h1>
                     <p class="lead">欢迎使用爱博网自动化管理系统</p>
-                    <p style="color: red;">${mes}</p>
+                    <p style="color: red;">${loginError}</p>
                 </div>
                 <div class="panel mt30 mb25">
                     <form method="post" action="/oa/login.do" id="contact">
@@ -46,7 +46,7 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="panel-footer clearfix">
+                        <div class="panel-footer clearfix" align="center">
                             <button type="submit" class="button btn-primary mr10 pull-middle">登陆</button>
 <%--                            <label class="switch ib switch-primary mt10">--%>
 

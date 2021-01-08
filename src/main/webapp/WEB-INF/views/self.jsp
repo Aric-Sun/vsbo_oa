@@ -28,7 +28,7 @@
 
                     <div class="section row">
                         <div class="col-md-2">所属部门</div>
-                        <div class="col-md-4">${map.dName}</div>
+                        <div class="col-md-4">${map.dname}</div>
                     </div>
 
                     <div class="panel-footer text-right">

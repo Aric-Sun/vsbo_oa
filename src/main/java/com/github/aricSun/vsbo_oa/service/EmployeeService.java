@@ -6,6 +6,7 @@ import com.github.aricSun.vsbo_oa.utils.MD5Util;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -43,5 +44,10 @@ public class EmployeeService {
 
     public void deleteEmp(int eId) {
         employeeMapper.deleteEmp(eId);
+    }
+
+    public HashMap login(int eId, String password) {
+        String passwordWithMD5 = MD5Util.md5(password);
+        return employeeMapper.login(eId, passwordWithMD5);
     }
 }

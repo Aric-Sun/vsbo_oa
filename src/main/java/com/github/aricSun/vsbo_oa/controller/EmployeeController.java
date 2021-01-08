@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -94,5 +95,23 @@ public class EmployeeController {
         employeeService.deleteEmp(eId);
 
         return "redirect:getEmps.do";
+    }
+
+    // 登录
+    @RequestMapping("/login.do")
+    public String login(int eId, String password, HttpServletRequest request){
+        // 如果登陆成功，到个人中心
+        // 登陆失败，回到登录界面，给出错误信息
+
+        // 数据库中的密码是加密，验证时先加密
+        HashMap hashMap = employeeService.login(eId, password);
+        if (hashMap != null){
+            // login ok
+            return "self";
+        } else {
+            // fail
+            request.setAttribute("loginError", "用户名或者密码输入有误");
+            return "forward:login.jsp";  // 不在views下，不能走视图解析器
+        }
     }
 }
