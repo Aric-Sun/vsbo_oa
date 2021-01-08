@@ -33,7 +33,7 @@ public class LoginInterceptor implements HandlerInterceptor {
         }
 
         // 如果用户已经登录，放行
-        if (request.getSession().getAttribute("emp") != null){
+        if (request.getSession().getAttribute("map") != null){
             return true;
         }
 

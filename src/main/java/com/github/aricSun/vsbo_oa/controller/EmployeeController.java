@@ -109,12 +109,23 @@ public class EmployeeController {
         if (hashMap != null){
             // login ok
             // 将用户信息存储在session
-            session.setAttribute("emp", hashMap);  // 只需要有值就行，存什么不重要
+            session.setAttribute("map", hashMap);  // 只需要有值就行，存什么不重要
             return "self";
         } else {
             // fail
             request.setAttribute("loginError", "用户名或者密码输入有误");
             return "forward:login.jsp";  // 不在views下，不能走视图解析器
         }
+    }
+
+    // 个人中心
+    @RequestMapping("/self.do")
+    public String self(HttpSession session,HttpServletRequest request){
+//        employeeService.getEmpById(session.getAttribute("map")
+        HashMap map = (HashMap) session.getAttribute("map");
+        int eId = (int) map.get("eId");
+        Employee empById = employeeService.getEmpById(eId);
+        request.setAttribute("emp" ,empById);
+        return "self";
     }
 }
