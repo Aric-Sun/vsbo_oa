@@ -120,12 +120,12 @@ public class EmployeeController {
 
     // 个人中心
     @RequestMapping("/self.do")
-    public String self(HttpSession session,HttpServletRequest request){
+    public String self(){
 //        employeeService.getEmpById(session.getAttribute("map")
-        HashMap map = (HashMap) session.getAttribute("map");
-        int eId = (int) map.get("eId");
-        Employee empById = employeeService.getEmpById(eId);
-        request.setAttribute("emp" ,empById);
+//        HashMap map = (HashMap) session.getAttribute("map");
+//        int eId = (int) map.get("eId");
+//        Employee empById = employeeService.getEmpById(eId);
+//        request.setAttribute("emp" ,empById);
         return "self";
     }
 }
