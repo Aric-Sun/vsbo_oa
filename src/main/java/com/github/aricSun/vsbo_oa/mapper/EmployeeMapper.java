@@ -25,5 +25,7 @@ public interface EmployeeMapper {
     void deleteEmp(@Param("eId") int eId);
 
     HashMap login(@Param("eId") int eId, @Param("password") String passwordWithMD5);
+
+    void updatePassword(@Param("password") String newPwd1, @Param("eId") Integer eId);
 }
 

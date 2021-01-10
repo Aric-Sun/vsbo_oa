@@ -5,6 +5,7 @@ import com.github.aricSun.vsbo_oa.pojo.Employee;
 import com.github.aricSun.vsbo_oa.service.DepartmentService;
 import com.github.aricSun.vsbo_oa.service.EmployeeService;
 import com.github.aricSun.vsbo_oa.utils.Constant;
+import com.github.aricSun.vsbo_oa.utils.MD5Util;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -135,5 +136,38 @@ public class EmployeeController {
     public String quit(HttpSession session){
         session.setAttribute("map", null);  // 退出
         return "redirect:login.jsp";
+    }
+
+    // 去修改页面
+    @RequestMapping("/to_changePwd.do")
+    public String to_changePwd(){
+        return "changePwd";
+    }
+
+    // 修改密码
+    @RequestMapping("/changePwd.do")
+    public String changePwd(String oldPwd, String newPwd1, String newPwd2, HttpSession session, HttpServletRequest request){
+        // 获取当前密码
+        HashMap map = (HashMap) session.getAttribute("map");
+        String password = (String) map.get("password");
+        Integer eId = (Integer) map.get("eId");
+        String result = "forward:to_changePwd.do";
+
+        // 判断旧密码(MD5加密后)是不是对的
+        // 判断两次新密码是不是一致的
+        // 更新密码
+        if (password.equals(MD5Util.md5(oldPwd))){
+            if (newPwd1.equals(newPwd2)){
+                employeeService.updatePassword(newPwd1, eId);
+                result = "redirect:quit.do";
+            } else {
+                request.setAttribute("updateError", "两个新密码不一致！");
+            }
+        } else {
+            // 如果session中的密码不一致，或者两次输入的密码不一致的情况下，回到个人中心
+            request.setAttribute("updateError", "原密码错误！");
+        }
+
+        return result;
     }
 }

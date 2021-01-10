@@ -50,4 +50,9 @@ public class EmployeeService {
         String passwordWithMD5 = MD5Util.md5(password);
         return employeeMapper.login(eId, passwordWithMD5);
     }
+
+    public void updatePassword(String newPwd1, Integer eId) {
+        // 将新密码的md5加密延后到服务层进行
+        employeeMapper.updatePassword(MD5Util.md5(newPwd1), eId);
+    }
 }

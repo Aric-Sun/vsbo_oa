@@ -59,4 +59,11 @@
         on e.d_id = d.d_id
         where e.e_id = #{eId} and e.password = #{password};
     </select>
+
+<!--    修改密码-->
+    <update id="updatePassword">
+        update employee
+        set password = #{password}
+        where e_id = #{eId};
+    </update>
 </mapper>
