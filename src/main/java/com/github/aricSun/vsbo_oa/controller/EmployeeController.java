@@ -128,4 +128,12 @@ public class EmployeeController {
 //        request.setAttribute("emp" ,empById);
         return "self";
     }
+
+    // 退出
+    // 登录的时候是将所有的信息存储到session少，退就是将session的数据给移除或者设为null
+    @RequestMapping("/quit.do")
+    public String quit(HttpSession session){
+        session.setAttribute("map", null);  // 退出
+        return "redirect:login.jsp";
+    }
 }
