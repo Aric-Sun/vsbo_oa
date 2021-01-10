@@ -33,7 +33,7 @@
                             <div>
                                 <div class="col-md-3">
                                     <label  class="field prepend-icon">
-                                        <select name="type" class="gui-input" placeholder="花销类型...">
+                                        <select name="type" class="gui-input" placeholder="报销类型...">
                                             <c:forEach var="item" items="${items}">
                                                 <option value="${item}">${item}</option>
                                             </c:forEach>
