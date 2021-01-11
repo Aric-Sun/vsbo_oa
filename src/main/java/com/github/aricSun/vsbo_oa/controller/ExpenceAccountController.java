@@ -7,6 +7,7 @@ import com.github.aricSun.vsbo_oa.service.ExpenceAccountService;
 import com.github.aricSun.vsbo_oa.service.ExpenceDetailService;
 import com.github.aricSun.vsbo_oa.service.RecordService;
 import com.github.aricSun.vsbo_oa.utils.Constant;
+import com.github.aricSun.vsbo_oa.utils.SessionUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,12 +43,11 @@ public class ExpenceAccountController {
     // 不是提交，仅仅是保存到DB
     @RequestMapping("/addExpence.do")
     @Transactional
-    public String addExpence(ExpenseAccountInfo info, HttpSession session, HttpServletRequest request){
+    public String addExpence(ExpenseAccountInfo info, HttpSession session){
         Date currentTime = new Date();
 
         // 获取当前用户id
-        HashMap map = (HashMap) session.getAttribute("map");
-        Integer eId = (Integer) map.get("eId");
+        Integer eId = SessionUtils.getEId(session);
 
         // 获取报销单对象，并设定一些值
         ExpenceAccount expenceAccount = info.getExpenceAccount();
@@ -90,8 +90,7 @@ public class ExpenceAccountController {
     @RequestMapping("/getExpenceAccountForSelf.do")
     public String getExpenceAccountForSelf(HttpSession session, HashMap hashMap){
         // 获取当前用户id
-        HashMap empMap = (HashMap) session.getAttribute("map");
-        Integer eId = (Integer) empMap.get("eId");
+        Integer eId = SessionUtils.getEId(session);
         List eas = expenceAccountService.getByCreatorId(eId);
         hashMap.put("eas", eas);
         return "expence_account_self";
@@ -101,8 +100,7 @@ public class ExpenceAccountController {
     @RequestMapping("/getExpenceAccountForNext.do")
     public String getExpenceAccountForNext(HttpSession session, HashMap hashMap){
         // 获取当前用户id
-        HashMap empMap = (HashMap) session.getAttribute("map");
-        Integer eId = (Integer) empMap.get("eId");
+        Integer eId = SessionUtils.getEId(session);
         List eas = expenceAccountService.getByNextHandlerId(eId);
         hashMap.put("eas", eas);
 
