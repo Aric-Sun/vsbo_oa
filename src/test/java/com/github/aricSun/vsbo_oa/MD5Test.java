@@ -11,6 +11,6 @@ public class MD5Test {
 
     @Test
     public void testMD5(){
-        System.out.println(MD5Util.md5("11"));
+        System.out.println(MD5Util.md5("123"));
     }
 }

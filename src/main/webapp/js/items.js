@@ -25,9 +25,9 @@ $(document).ready(function(){
 
 function builderIndex(){
 	$.each($("#items").children(),function(i,val){
-		$("#items").children("div").eq(i).children().eq(0).find("select").attr("name","items["+i+"].item");		
-		$("#items").children("div").eq(i).children().eq(1).find("input").attr("name","items["+i+"].amount");				
-		$("#items").children("div").eq(i).children().eq(2).find("input").attr("name","items["+i+"].comment");
+		$("#items").children("div").eq(i).children().eq(0).find("select").attr("name","details["+i+"].type");
+		$("#items").children("div").eq(i).children().eq(1).find("input").attr("name","details["+i+"].money");
+		$("#items").children("div").eq(i).children().eq(2).find("input").attr("name","details["+i+"].description");
 				
 	});	
 }

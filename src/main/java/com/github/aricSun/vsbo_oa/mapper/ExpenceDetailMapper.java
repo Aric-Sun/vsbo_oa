@@ -2,6 +2,8 @@ package com.github.aricSun.vsbo_oa.mapper;
 
 import com.github.aricSun.vsbo_oa.pojo.ExpenceDetail;
 
+import java.util.List;
+
 public interface ExpenceDetailMapper {
     int deleteByPrimaryKey(Integer edId);
 
@@ -14,4 +16,6 @@ public interface ExpenceDetailMapper {
     int updateByPrimaryKeySelective(ExpenceDetail record);
 
     int updateByPrimaryKey(ExpenceDetail record);
+
+    List<ExpenceDetail> selectByEaId(int eaId);
 }

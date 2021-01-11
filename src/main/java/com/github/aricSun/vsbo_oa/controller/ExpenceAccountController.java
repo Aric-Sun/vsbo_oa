@@ -1,12 +1,22 @@
 package com.github.aricSun.vsbo_oa.controller;
 
-import com.github.aricSun.vsbo_oa.mapper.ExpenceAccountMapper;
+import com.github.aricSun.vsbo_oa.pojo.ExpenceAccount;
+import com.github.aricSun.vsbo_oa.pojo.ExpenceDetail;
+import com.github.aricSun.vsbo_oa.pojo.ExpenseAccountInfo;
+import com.github.aricSun.vsbo_oa.service.ExpenceAccountService;
+import com.github.aricSun.vsbo_oa.service.ExpenceDetailService;
+import com.github.aricSun.vsbo_oa.service.RecordService;
 import com.github.aricSun.vsbo_oa.utils.Constant;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author AricSun
@@ -15,7 +25,11 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class ExpenceAccountController {
     @Resource
-    private ExpenceAccountMapper expenceAccountMapper;
+    private ExpenceAccountService expenceAccountService;
+    @Resource
+    private ExpenceDetailService expenceDetailService;
+    @Resource
+    private RecordService recordService;
 
     // 去填写报销单
     @RequestMapping("/to_addExpence.do")
@@ -23,4 +37,54 @@ public class ExpenceAccountController {
         request.setAttribute("items", Constant.getItems());
         return "expence_account_add";
     }
+
+    // 保存报销单
+    // 不是提交，仅仅是保存到DB
+    @RequestMapping("/addExpence.do")
+    @Transactional
+    public String addExpence(ExpenseAccountInfo info, HttpSession session, HttpServletRequest request){
+        Date currentTime = new Date();
+
+        // 获取当前用户id
+        HashMap map = (HashMap) session.getAttribute("map");
+        Integer eId = (Integer) map.get("eId");
+
+        // 获取报销单对象，并设定一些值
+        ExpenceAccount expenceAccount = info.getExpenceAccount();
+        expenceAccount.setCreateTime(currentTime);  // set time as current time
+        expenceAccount.setStatus(Constant.EXPENCE_CREATED);  // 设置报销单状态：新创建
+        expenceAccount.setCreaterId(eId);
+        expenceAccount.setNextHandlerId(eId);
+
+        // 新增完成后，返回一个主键id，留给明细表的外键
+        expenceAccountService.addExpenseAccount(expenceAccount);
+        int eaId = expenceAccount.getEaId();
+
+        // 设定报销单id为外键
+        List<ExpenceDetail> details = info.getDetails();
+        for (ExpenceDetail detail : details) {
+            detail.setEaId(eaId);
+            expenceDetailService.addExpenseDetail(detail);
+        }
+
+        // 跳转到报销单明细
+        return "redirect:getExpenceDetail.do?eaId="+eaId;
+    }
+
+    // 获取报销单明细
+    @RequestMapping("/getExpenceDetail.do")
+    public String getExpenseDetail(int eaId, HashMap map){
+
+        // 联查createrName和nextName
+        map.put("expenceAccountMap", expenceAccountService.getExpenseById(eaId));
+
+        map.put("expenceDetails", expenceDetailService.getDetailsByEaId(eaId));
+
+        // 联查员工姓名
+        map.put("records", recordService.getByEaId(eaId));
+
+        return "expence_account_detail";
+    }
+
+
 }

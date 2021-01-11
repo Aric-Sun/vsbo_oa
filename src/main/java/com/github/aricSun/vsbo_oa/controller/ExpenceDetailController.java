@@ -1,6 +1,7 @@
 package com.github.aricSun.vsbo_oa.controller;
 
 import com.github.aricSun.vsbo_oa.mapper.ExpenceDetailMapper;
+import com.github.aricSun.vsbo_oa.service.ExpenceDetailService;
 import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
@@ -12,5 +13,5 @@ import javax.annotation.Resource;
 @Controller
 public class ExpenceDetailController {
     @Resource
-    private ExpenceDetailMapper expenceDetailMapper;
+    private ExpenceDetailService expenceDetailService;
 }

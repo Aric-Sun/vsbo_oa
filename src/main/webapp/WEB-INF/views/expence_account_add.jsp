@@ -33,7 +33,7 @@
                             <div>
                                 <div class="col-md-3">
                                     <label  class="field prepend-icon">
-                                        <select name="type" class="gui-input" placeholder="报销类型...">
+                                        <select class="gui-input" placeholder="报销类型...">
                                             <c:forEach var="item" items="${items}">
                                                 <option value="${item}">${item}</option>
                                             </c:forEach>
@@ -43,8 +43,8 @@
 
                                 <div class="col-md-3">
                                     <label class="field prepend-icon">
-                                        <input name="money" class="gui-input money" placeholder="金额..."/>
-                                        <label  class="field-icon">
+                                        <input class="gui-input money" placeholder="金额..."/>
+                                        <label class="field-icon">
                                             <i class="fa fa-lock"></i>
                                         </label>
                                     </label>
@@ -52,7 +52,7 @@
 
                                 <div class="col-md-5">
                                     <label  class="field prepend-icon">
-                                        <input name="description" class="gui-input" placeholder="备注..." />
+                                        <input class="gui-input" placeholder="备注..." />
                                         <label  class="field-icon">
                                             <i class="fa fa-lock"></i>
                                         </label>

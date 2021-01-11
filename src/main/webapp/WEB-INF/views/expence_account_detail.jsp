@@ -31,7 +31,7 @@
                     </div>
                     <div class="section row">
                         <div class="col-md-2">待处理人</div>
-                        <div class="col-md-4">${expenceAccountMap.nextName}</div>
+                        <div class="col-md-4">${expenceAccountMap.nextHandlerName}</div>
                         <div class="col-md-2">状态</div>
                         <div class="col-md-4">${expenceAccountMap.status}</div>
                     </div>
