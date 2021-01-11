@@ -135,10 +135,9 @@
     </select>
 
 <!--    联查两个ename，待处理报销单-->
-    <select id="getByNextHandlerId" parameterType="Integer" resultMap="expenseAndEmp">
-        select ea.*, e.ename creator_name, emp.ename next_handler_name from expence_account ea
+    <select id="getByNextHandlerId" parameterType="Integer" resultMap="expenseForSelf">
+        select ea.*, e.ename creator_name from expence_account ea
         left join employee e on ea.creater_id = e.e_id
-        left join employee emp on ea.next_handler_id = emp.e_id
         where ea.next_handler_id = #{eId}
     </select>
 </mapper>
