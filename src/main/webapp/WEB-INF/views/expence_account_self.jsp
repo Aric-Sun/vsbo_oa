@@ -66,7 +66,7 @@
                                 <td>${ea.createrName}</td>
                                 <td class="text-center fw600">${ea.total_money}</td>
                                 <td><fmt:formatDate type="time"  value="${ea.create_time}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-                                <td><a href="/oa/detail?eaid=${ea.id}">详细信息</a></td>
+                                <td><a href="/oa/getExpenceDetail.do?eaId=${ea.eaId}">详细信息</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

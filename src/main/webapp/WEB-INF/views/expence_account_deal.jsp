@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.github.aricSun.vsbo_oa.utils.Content" %>
+<%@ page import="com.github.aricSun.vsbo_oa.utils.Constant" %>
 <jsp:include page="top.jsp"/>
 <section id="content" class="table-layout animated fadeIn">
     <div class="tray tray-center">
@@ -67,17 +67,17 @@
                                 <td>${ea.createrName}</td>
                                 <td class="text-center fw600">${ea.total_money}</td>
                                 <td><fmt:formatDate type="time"  value="${ea.create_time}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
-                                <c:if test="${ea.status==Content.EXPENCE_CREATED || ea.status == Content.EXPENCE_BACK}">
-                                    <td><a href="/oa/detail?eaid=${ea.id}">修改</a></td>
-                                    <td><a href="/oa/detail?eaid=${ea.id}">提交</a></td>
+                                <c:if test="${ea.status==Constant.EXPENCE_CREATED || ea.status == Constant.EXPENCE_BACK}">
+                                    <td><a href="/oa/detail?eaId=${ea.eaId}">修改</a></td>
+                                    <td><a href="/oa/detail?eaId=${ea.eaId}">提交</a></td>
                                 </c:if>
-                                <c:if test="${ea.status == Content.EXPENCE_SUBMIT || ea.status == Content.EXPENCE_RECHECK}">
-                                    <td><a href="/oa/detail?eaid=${ea.id}">审核</a></td>
+                                <c:if test="${ea.status == Constant.EXPENCE_SUBMIT || ea.status == Constant.EXPENCE_RECHECK}">
+                                    <td><a href="/oa/detail?eaId=${ea.eaId}">审核</a></td>
                                 </c:if>
-                                <c:if test="${ea.status == Content.EXPENCE_REVIEWED}">
-                                    <td><a href="/oa/detail?eaid=${ea.id}">打款</a></td>
+                                <c:if test="${ea.status == Constant.EXPENCE_REVIEWED}">
+                                    <td><a href="/oa/detail?eaId=${ea.eaId}">打款</a></td>
                                 </c:if>
-                                <td><a href="/oa/detail?eaid=${ea.id}">详细信息</a></td>
+                                <td><a href="/oa/getExpenceDetail.do?eaId=${ea.eaId}">详细信息</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

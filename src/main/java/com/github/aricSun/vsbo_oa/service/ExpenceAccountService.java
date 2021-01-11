@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -25,5 +26,15 @@ public class ExpenceAccountService {
     // 根据编号查询基本信息，需要联查姓名
     public HashMap getExpenseById(int eaId) {
         return expenceAccountMapper.getExpenseById(eaId);
+    }
+
+    // 联查ename
+    public List getByCreatorId(Integer eId) {
+        return expenceAccountMapper.getByCreatorId(eId);
+    }
+
+    // 联查ename，查询带出差报销单
+    public List getByNextHandlerId(Integer eId) {
+        return expenceAccountMapper.getByNextHandlerId(eId);
     }
 }

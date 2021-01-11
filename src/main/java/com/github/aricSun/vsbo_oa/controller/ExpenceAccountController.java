@@ -86,5 +86,26 @@ public class ExpenceAccountController {
         return "expence_account_detail";
     }
 
+    // 查看个人报销单，当前登录用户的
+    @RequestMapping("/getExpenceAccountForSelf.do")
+    public String getExpenceAccountForSelf(HttpSession session, HashMap hashMap){
+        // 获取当前用户id
+        HashMap empMap = (HashMap) session.getAttribute("map");
+        Integer eId = (Integer) empMap.get("eId");
+        List eas = expenceAccountService.getByCreatorId(eId);
+        hashMap.put("eas", eas);
+        return "expence_account_self";
+    }
 
+    // 获取待处理报销单，当前登录用户的
+    @RequestMapping("/getExpenceAccountForNext.do")
+    public String getExpenceAccountForNext(HttpSession session, HashMap hashMap){
+        // 获取当前用户id
+        HashMap empMap = (HashMap) session.getAttribute("map");
+        Integer eId = (Integer) empMap.get("eId");
+        List eas = expenceAccountService.getByNextHandlerId(eId);
+        hashMap.put("eas", eas);
+
+        return "expence_account_deal";
+    }
 }

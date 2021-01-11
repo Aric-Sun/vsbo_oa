@@ -114,12 +114,31 @@
         <result property="createrName" column="creator_name"/>
         <result property="nextHandlerName" column="next_handler_name"/>
     </resultMap>
-
     <!--  根据报销单编号查询基本信息，名字联查-->
     <select id="getExpenseById" parameterType="int" resultMap="expenseAndEmp">
         select ea.*, e.ename creator_name, emp.ename next_handler_name from expence_account ea
         left join employee e on ea.creater_id = e.e_id
         left join employee emp on ea.next_handler_id = emp.e_id
         where ea_id = #{eaId}
+    </select>
+
+<!--    个人报销单-->
+    <resultMap id="expenseForSelf" type="HashMap" autoMapping="true">
+        <id property="eaId" column="ea_id"/>
+        <result property="createrName" column="creator_name"/>
+    </resultMap>
+<!--联查姓名ename-->
+    <select id="getByCreatorId" parameterType="Integer" resultMap="expenseForSelf">
+        select ea.*, e.ename creator_name from expence_account ea
+        left join employee e on ea.creater_id = e.e_id
+        where creater_id = #{eId}
+    </select>
+
+<!--    联查两个ename，待处理报销单-->
+    <select id="getByNextHandlerId" parameterType="Integer" resultMap="expenseAndEmp">
+        select ea.*, e.ename creator_name, emp.ename next_handler_name from expence_account ea
+        left join employee e on ea.creater_id = e.e_id
+        left join employee emp on ea.next_handler_id = emp.e_id
+        where ea.next_handler_id = #{eId}
     </select>
 </mapper>
