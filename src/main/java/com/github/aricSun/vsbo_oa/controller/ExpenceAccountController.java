@@ -44,27 +44,20 @@ public class ExpenceAccountController {
     @RequestMapping("/addExpence.do")
     @Transactional
     public String addExpence(ExpenseAccountInfo info, HttpSession session){
-        Date currentTime = new Date();
-
         // 获取当前用户id
         Integer eId = SessionUtils.getEId(session);
 
         // 获取报销单对象，并设定一些值
         ExpenceAccount expenceAccount = info.getExpenceAccount();
-        expenceAccount.setCreateTime(currentTime);  // set time as current time
-        expenceAccount.setStatus(Constant.EXPENCE_CREATED);  // 设置报销单状态：新创建
-        expenceAccount.setCreaterId(eId);
-        expenceAccount.setNextHandlerId(eId);
 
         // 新增完成后，返回一个主键id，留给明细表的外键
-        expenceAccountService.addExpenseAccount(expenceAccount);
+        expenceAccountService.addExpenseAccount(expenceAccount,eId);
         int eaId = expenceAccount.getEaId();
 
         // 设定报销单id为外键
         List<ExpenceDetail> details = info.getDetails();
         for (ExpenceDetail detail : details) {
-            detail.setEaId(eaId);
-            expenceDetailService.addExpenseDetail(detail);
+            expenceDetailService.addExpenseDetail(detail, eaId);
         }
 
         // 跳转到报销单明细

@@ -18,7 +18,8 @@ public class ExpenceDetailService {
     @Resource
     private ExpenceDetailMapper expenceDetailMapper;
 
-    public void addExpenseDetail(ExpenceDetail detail) {
+    public void addExpenseDetail(ExpenceDetail detail, int eaId) {
+        detail.setEaId(eaId);
         expenceDetailMapper.insert(detail);
     }
 

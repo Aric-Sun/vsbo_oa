@@ -2,9 +2,11 @@ package com.github.aricSun.vsbo_oa.service;
 
 import com.github.aricSun.vsbo_oa.mapper.ExpenceAccountMapper;
 import com.github.aricSun.vsbo_oa.pojo.ExpenceAccount;
+import com.github.aricSun.vsbo_oa.utils.Constant;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,7 +21,11 @@ public class ExpenceAccountService {
     @Resource
     private ExpenceAccountMapper expenceAccountMapper;
 
-    public void addExpenseAccount(ExpenceAccount expenceAccount) {
+    public void addExpenseAccount(ExpenceAccount expenceAccount, Integer eId) {
+        expenceAccount.setCreateTime(new Date());  // set time as current time
+        expenceAccount.setStatus(Constant.EXPENCE_CREATED);  // 设置报销单状态：新创建
+        expenceAccount.setCreaterId(eId);
+        expenceAccount.setNextHandlerId(eId);
         expenceAccountMapper.insert(expenceAccount);
     }
 
