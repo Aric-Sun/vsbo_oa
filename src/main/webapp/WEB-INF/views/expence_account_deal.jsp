@@ -72,10 +72,10 @@
                                     <td><a href="/oa/submit.do?eaId=${ea.eaId}">提交</a></td>
                                 </c:if>
                                 <c:if test="${ea.status == Constant.EXPENCE_SUBMIT || ea.status == Constant.EXPENCE_RECHECK}">
-                                    <td><a href="/oa/detail?eaId=${ea.eaId}">审核</a></td>
+                                    <td><a href="/oa/to_check.do?eaId=${ea.eaId}">审核</a></td>
                                 </c:if>
                                 <c:if test="${ea.status == Constant.EXPENCE_REVIEWED}">
-                                    <td><a href="/oa/detail?eaId=${ea.eaId}">打款</a></td>
+                                    <td><a href="/oa/to_check.do?eaId=${ea.eaId}">打款</a></td>
                                 </c:if>
                                 <td><a href="/oa/getExpenceDetail.do?eaId=${ea.eaId}">详细信息</a></td>
                             </tr>

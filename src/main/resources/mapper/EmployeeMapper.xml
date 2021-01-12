@@ -73,4 +73,10 @@
         where d_id = #{dId}
           and job = #{job};
      </select>
+
+<!--    根据职务获取员工对象-->
+    <select id="selectByJob" parameterType="String" resultType="Employee">
+        select * from employee
+        where job = #{job};
+    </select>
 </mapper>

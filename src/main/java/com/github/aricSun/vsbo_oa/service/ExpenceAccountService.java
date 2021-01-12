@@ -7,6 +7,7 @@ import com.github.aricSun.vsbo_oa.pojo.Employee;
 import com.github.aricSun.vsbo_oa.pojo.ExpenceAccount;
 import com.github.aricSun.vsbo_oa.pojo.Record;
 import com.github.aricSun.vsbo_oa.utils.Constant;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -87,5 +88,51 @@ public class ExpenceAccountService {
 
         // 持久层新增
         recordMapper.insertSelective(record);  // 可能comment为空，所以要用Selective
+    }
+
+    // 报销单的审批流程
+    @Transactional
+    public void check(int eaId, String dealWay, HashMap map) {
+        ExpenceAccount ea = expenceAccountMapper.selectByPrimaryKey(eaId);
+
+        Record record = new Record();
+        record.setRecordTime(new Date());
+        record.seteId((Integer) (map.get("eId")));
+        record.setEaId(eaId);
+        record.setRecordType(dealWay);
+
+        switch (dealWay){
+            case Constant.DEAL_PASS: // 通过的处理方式，金额小于5000，当前处理人是总经理，处理后的状态为已审核，下一个处理人是财务
+                if (ea.getTotalMoney() < 5000 || map.get("job").equals(Constant.POST_GM)){
+                    ea.setStatus(Constant.EXPENCE_REVIEWED);  // 已审核
+                    ea.setNextHandlerId(employeeMapper.selectByJob(Constant.POST_FINANCE).geteId());  // 交给财务
+                    record.setRecordResult(Constant.EXPENCE_REVIEWED);  // 同步记录
+                } else {
+                    ea.setStatus(Constant.EXPENCE_RECHECK);  // 待复审
+                    ea.setNextHandlerId(employeeMapper.selectByJob(Constant.POST_GM).geteId());  // 交给总经理
+                    record.setRecordResult(Constant.EXPENCE_RECHECK);  // 同步记录
+                }
+                break;
+            case Constant.DEAL_BACK: // 被打回的处理方式，
+                ea.setStatus(Constant.EXPENCE_BACK);  // 被打回
+                ea.setNextHandlerId(ea.getCreaterId());  // 交给自己
+                record.setRecordResult(Constant.EXPENCE_BACK);  // 同步记录
+                break;
+            case Constant.DEAL_REJECT: // 被拒绝的处理方式
+                ea.setStatus(Constant.EXPENCE_END);  // 终止
+                ea.setNextHandlerId(0);  // 终止操作
+                record.setRecordResult(Constant.EXPENCE_END);
+                break;
+            case Constant.DEAL_PAID:
+                ea.setStatus(Constant.EXPENCE_PAID);  // 已打款
+                ea.setNextHandlerId(0);  // 终止操作
+                record.setRecordResult(Constant.EXPENCE_PAID);
+                break;
+            default:
+                break;
+        }
+
+        expenceAccountMapper.updateByPrimaryKey(ea);
+        recordMapper.insertSelective(record);
     }
 }

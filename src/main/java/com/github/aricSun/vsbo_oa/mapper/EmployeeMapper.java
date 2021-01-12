@@ -30,5 +30,8 @@ public interface EmployeeMapper {
 
     // 根据部门编号和职位获取emp
     Employee selectByDeptAndJob(@Param("dId") int dId, @Param("job") String job);
+
+    // 根据职务获取员工对象
+    Employee selectByJob(String job);
 }
 

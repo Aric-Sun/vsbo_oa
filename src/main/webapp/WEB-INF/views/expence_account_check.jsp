@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<%@ page import="com.github.aricSun.vsbo_oa.utils.Constant" %>
 <jsp:include page="top.jsp"/>
 
 <section id="content" class="table-layout animated fadeIn">
@@ -26,7 +26,7 @@
                         <div class="col-md-2">创建时间</div>
                         <div class="col-md-4">
                             <fmt:formatDate type="time" value="${expenceAccountMap.create_time}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
-<%--                            ${expenceAccountMap.create_time}--%>
+                            <%--                            ${expenceAccountMap.create_time}--%>
                         </div>
                     </div>
                     <div class="section row">
@@ -61,9 +61,24 @@
                             <div class="col-md-5">备注：${record.comment}</div>
                         </c:forEach>
                     </div>
+
+                    <form action="/oa/check.do">
                     <div class="panel-footer text-right">
+
+                        <input type="hidden" name="eaId" value="${expenceAccountMap.eaId}">
+                        <c:if test="${map.job==Constant.POST_PM || map.job==Constant.POST_GM}">
+                            <button type="submit" class="button" name="dealWay" value="${Constant.DEAL_PASS}" >${Constant.DEAL_PASS}</button>
+                            <button type="submit" class="button" name="dealWay" value="${Constant.DEAL_BACK}" >${Constant.DEAL_BACK}</button>
+                            <button type="submit" class="button" name="dealWay" value="${Constant.DEAL_REJECT}" >${Constant.DEAL_REJECT}</button>
+                        </c:if>
+                        <c:if test="${map.job==Constant.POST_FINANCE}">
+                            <button type="submit" class="button" name="dealWay" value="${Constant.DEAL_PAID}" >${Constant.DEAL_PAID}</button>
+                        </c:if>
+
                         <button type="button" class="button" onclick="javascript:window.history.go(-1);"> 返回 </button>
                     </div>
+                    </form>
+
                 </div>
             </div>
         </div>

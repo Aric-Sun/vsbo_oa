@@ -109,4 +109,27 @@ public class ExpenceAccountController {
         expenceAccountService.submit(eaId);
         return "redirect:getExpenceAccountForNext.do";  // 处理完成之后回到待处理报销单
     }
+
+    /*
+     * function: 前往审核页面
+     * @Param [报销单id]
+     * @Return java.lang.String
+     */
+    @RequestMapping("/to_check.do")
+    public String toCheck(int eaId, HashMap map){
+        map.put("expenceAccountMap", expenceAccountService.getExpenseById(eaId));
+        map.put("expenceDetails", expenceDetailService.getDetailsByEaId(eaId));
+        map.put("records", recordService.getByEaId(eaId));
+
+        return "expence_account_check";
+    }
+
+    // 处理报销单
+    @RequestMapping("/check.do")
+    public String check(int eaId, String dealWay, HttpSession session){
+        HashMap map = (HashMap) session.getAttribute("map");
+        expenceAccountService.check(eaId, dealWay, map);
+        // 前往待处理页面
+        return "redirect:getExpenceAccountForNext.do";
+    }
 }

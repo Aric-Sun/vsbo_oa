@@ -28,7 +28,7 @@
             <li class="dropdown menu-merge">
                 <a href="#" class="dropdown-toggle fw600 p15" data-toggle="dropdown">
                     <img src="/oa/assets/img/avatars/5.jpg" alt="avatar" class="mw30 br64">
-                    <span class="hidden-xs pl15"> 刘备 </span>
+                    <span class="hidden-xs pl15"> ${map.ename} </span>
                     <span class="caret caret-tp hidden-xs"></span>
                 </a>
                 <ul class="dropdown-menu list-group dropdown-persist w250" role="menu">
@@ -59,7 +59,7 @@
                             <img src="/oa/assets/img/avatars/3.jpg" class="img-responsive">
                         </a>
                         <div class="media-body">
-                            <div class="media-author">刘备--总经理</div>
+                            <div class="media-author">${map.ename}--${map.job}</div>
                             <div class="media-links">
                                 <a href="/oa/quit.do">退出</a>
                             </div>
