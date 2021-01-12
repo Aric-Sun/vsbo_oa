@@ -110,6 +110,11 @@
     <resultMap id="recordAndEmp" type="HashMap" autoMapping="true">
         <id property="recordId" column="record_id"/>
         <result property="ename" column="ename"/>
+        <result property="recordTime" column="record_time"/>
+        <result property="recordType" column="record_type"/>
+        <result property="recordResult" column="record_result"/>
+        <result property="eaId" column="ea_id"/>
+        <result property="eId" column="e_id"/>
     </resultMap>
 <!--    联查员工姓名-->
     <select id="selectByEaId" parameterType="int" resultMap="recordAndEmp">

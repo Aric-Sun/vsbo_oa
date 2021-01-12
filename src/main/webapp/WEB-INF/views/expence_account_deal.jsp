@@ -68,8 +68,8 @@
                                 <td class="text-center fw600">${ea.total_money}</td>
                                 <td><fmt:formatDate type="time"  value="${ea.create_time}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate></td>
                                 <c:if test="${ea.status==Constant.EXPENCE_CREATED || ea.status == Constant.EXPENCE_BACK}">
-                                    <td><a href="/oa/detail?eaId=${ea.eaId}">修改</a></td>
-                                    <td><a href="/oa/detail?eaId=${ea.eaId}">提交</a></td>
+<%--                                    <td><a href="/oa/submit.do?eaId=${ea.eaId}">修改</a></td>--%>
+                                    <td><a href="/oa/submit.do?eaId=${ea.eaId}">提交</a></td>
                                 </c:if>
                                 <c:if test="${ea.status == Constant.EXPENCE_SUBMIT || ea.status == Constant.EXPENCE_RECHECK}">
                                     <td><a href="/oa/detail?eaId=${ea.eaId}">审核</a></td>

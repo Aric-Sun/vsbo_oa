@@ -98,4 +98,15 @@ public class ExpenceAccountController {
 
         return "expence_account_deal";
     }
+
+    /*
+     * function: 提交报销单
+     * @Param [eaId报销单编号]
+     * @Return java.lang.String
+     */
+    @RequestMapping("/submit.do")
+    public String submit(int eaId){
+        expenceAccountService.submit(eaId);
+        return "redirect:getExpenceAccountForNext.do";  // 处理完成之后回到待处理报销单
+    }
 }

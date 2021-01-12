@@ -27,5 +27,8 @@ public interface EmployeeMapper {
     HashMap login(@Param("eId") int eId, @Param("password") String passwordWithMD5);
 
     void updatePassword(@Param("password") String newPwd1, @Param("eId") Integer eId);
+
+    // 根据部门编号和职位获取emp
+    Employee selectByDeptAndJob(@Param("dId") int dId, @Param("job") String job);
 }
 
