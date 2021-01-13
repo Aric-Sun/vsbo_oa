@@ -6,7 +6,7 @@
 
 技术介绍：SpringMVC, Spring, Mybatis, MySQL, Tomcat, JSP, EL, JSTL, 声明式事务
 
-开发环境：JDK8, Tomcat 8, MySQL5.6, IDEA2019, Spring4.2, Mybatis3.2.8
+开发环境：JDK8, Tomcat 9.0.41, MySQL8.0.17, IDEA2019, Spring4.2, Mybatis3.2.8
 
 功能模块：部门信息管理， 员工信息管理，报销单处理
 
